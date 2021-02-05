@@ -36,6 +36,6 @@ public class CarController : MonoBehaviour
 				{
 				body.AddTorque(movement * bodyTorque * Time.fixedDeltaTime * 100);
 				}
-				Debug.Log(backWheel.angularVelocity);
+				Debug.Log("Back Wheel Angular Velocity : "+backWheel.angularVelocity.ToString());
     }
 }
