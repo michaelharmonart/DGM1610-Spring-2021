@@ -676,6 +676,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1298711740252835997}
   m_PrefabAsset: {fileID: 0}
+--- !u!235 &2071513249
+WheelJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071513248}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 73741649}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0.7, y: -1.2}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Suspension:
+    m_DampingRatio: 0.7
+    m_Frequency: 2
+    m_Angle: 90
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
 --- !u!235 &2071513254
 WheelJoint2D:
   m_ObjectHideFlags: 0
@@ -686,11 +710,11 @@ WheelJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
+  m_ConnectedRigidBody: {fileID: 1477856112}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
+  m_Anchor: {x: -0.7, y: -1.2}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
     m_DampingRatio: 0.7
@@ -852,5 +876,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1298711740179244493, guid: 2a3b1ff1814f3a8d28e67ab6a90f24d2, type: 3}
+    - {fileID: 1298711739582389234, guid: 2a3b1ff1814f3a8d28e67ab6a90f24d2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2a3b1ff1814f3a8d28e67ab6a90f24d2, type: 3}
