@@ -9,6 +9,7 @@ public class CarController : MonoBehaviour
     public JointMotor2D motor;
     private float movement;
     public float torque;
+    public float fourWheelDriveAmmount;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        backWheel.AddTorque(-movement * torque * Time.fixedDeltaTime);
-        frontWheel.AddTorque(-movement * torque * Time.fixedDeltaTime);
+        backWheel.AddTorque(-movement * torque * Time.fixedDeltaTime * 10);
+        frontWheel.AddTorque(-movement * torque * Time.fixedDeltaTime * fourWheelDriveAmmount * 10);
     }
 }
