@@ -10,16 +10,20 @@ public class BallDroidController : MonoBehaviour
 	public float headForce;
 	public float speed;
 	public float torque;
-	public float proportional;
+	public float P,I,D,Tau;
+	public float maxOutput,minOutput;
 
 	private float movement;
 	private float headAngle;
 	private float headOffset;
 
+	PidController PID = new PidController();
+
 	// Start is called before the first frame update
 	void Start()
 	{
 
+		PID.Reset();
 	}
 
 	// Update is called once per frame
@@ -29,24 +33,13 @@ public class BallDroidController : MonoBehaviour
 	}
 	private void FixedUpdate()
 	{
+
 		headAngle = Vector3.Angle(new Vector3(0f,1f,0f),(head.transform.position - body.transform.position));
 		headOffset = head.transform.position.x - body.transform.position.x;
-		if(
-				(
-					Mathf.Abs(body.angularVelocity) < speed ||
-					Mathf.Abs(body.angularVelocity - headOffset) < Mathf.Abs(body.angularVelocity)
-				)
-				&& Mathf.Abs(Mathf.DeltaAngle(0, headAngle)) < headAngleSoftLimit
-			)
-		{
-			head.AddForce(new Vector2(movement * headForce,0));
-			body.AddTorque(-headOffset * torque * proportional * Time.fixedDeltaTime * 100);
-		}
-
-
-
-		Debug.Log(Mathf.Abs(Mathf.DeltaAngle(0, headAngle)));
-		Debug.Log("Body Angular Velocity : " + body.angularVelocity.ToString());
+		PID.Update(0,headOffset,P,I,D,Time.fixedDeltaTime,Tau,maxOutput,minOutput);
+		body.AddTorque(-PID.Output() * torque * Time.fixedDeltaTime * 100);
+		head.AddForce(new Vector2(movement * headForce,0));
+		Debug.Log(PID.Output());
 	}
 	void OnDrawGizmos()
 	{
