@@ -25,7 +25,7 @@ public class BallDroidController : MonoBehaviour
 	}
 	private void FixedUpdate()
 	{
-		headAngle = Vector3.Angle(new Vector3(0f,1f,0f),head.transform.position - body.transform.position) * Mathf.Rad2Deg;
+		headAngle = Vector3.Angle(new Vector3(0f,1f,0f),(head.transform.position - body.transform.position));
 		if(
 				(
 					Mathf.Abs(body.angularVelocity) < speed ||
