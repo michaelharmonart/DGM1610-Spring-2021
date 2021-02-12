@@ -576,6 +576,21 @@ PrefabInstance:
       objectReference: {fileID: 349398870}
     - target: {fileID: 1797972831832086468, guid: 2b772e932d0aba7a4848a16a367153fb,
         type: 3}
+      propertyPath: torque
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797972831832086468, guid: 2b772e932d0aba7a4848a16a367153fb,
+        type: 3}
+      propertyPath: headForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797972831832086468, guid: 2b772e932d0aba7a4848a16a367153fb,
+        type: 3}
+      propertyPath: proportional
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797972831832086468, guid: 2b772e932d0aba7a4848a16a367153fb,
+        type: 3}
       propertyPath: headAngleSoftLimit
       value: 180
       objectReference: {fileID: 0}

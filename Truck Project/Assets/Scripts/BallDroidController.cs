@@ -7,10 +7,14 @@ public class BallDroidController : MonoBehaviour
 	public Rigidbody2D body;
 	public Rigidbody2D head;
 	public float headAngleSoftLimit;
+	public float headForce;
 	public float speed;
-	private float movement;
 	public float torque;
+	public float proportional;
+
+	private float movement;
 	private float headAngle;
+	private float headOffset;
 
 	// Start is called before the first frame update
 	void Start()
@@ -26,16 +30,20 @@ public class BallDroidController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		headAngle = Vector3.Angle(new Vector3(0f,1f,0f),(head.transform.position - body.transform.position));
+		headOffset = head.transform.position.x - body.transform.position.x;
 		if(
 				(
 					Mathf.Abs(body.angularVelocity) < speed ||
-					Mathf.Abs(body.angularVelocity - movement) < Mathf.Abs(body.angularVelocity)
+					Mathf.Abs(body.angularVelocity - headOffset) < Mathf.Abs(body.angularVelocity)
 				)
 				&& Mathf.Abs(Mathf.DeltaAngle(0, headAngle)) < headAngleSoftLimit
 			)
 		{
-			body.AddTorque(-movement * torque * Time.fixedDeltaTime * 100);
+			head.AddForce(new Vector2(movement * headForce,0));
+			body.AddTorque(-headOffset * torque * proportional * Time.fixedDeltaTime * 100);
 		}
+
+
 
 		Debug.Log(Mathf.Abs(Mathf.DeltaAngle(0, headAngle)));
 		Debug.Log("Body Angular Velocity : " + body.angularVelocity.ToString());
