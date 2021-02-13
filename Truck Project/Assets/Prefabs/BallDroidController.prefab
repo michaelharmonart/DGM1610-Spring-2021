@@ -115,7 +115,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -193,8 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 2770599794686467139}
   head: {fileID: 2770599795741630868}
-  headAngleSoftLimit: 25
-  torque: 25
+  headAngleSoftLimit: 30
+  torque: 20
   jumpForce: 20
   P: 0.3
   I: 0.02
@@ -313,11 +313,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: df5b57bef9fe55c1f9d07c18bb0e272a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
