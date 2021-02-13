@@ -20,7 +20,7 @@ public class PidController
       derivative=0;
     }
 
-    public void Update(float setPoint,float actualPoint,float Kp,float Ki,float Kd, float sampleTime, float tau, float limitMaxOutput, float limitMinOutput)
+    public void Update(float setPoint,float actualPoint,float Kp,float Ki,float Kd, float sampleTime, float limitMaxOutput, float limitMinOutput)
     {
       errorValue = actualPoint - setPoint;
       proportional = Kp * errorValue;
@@ -54,7 +54,8 @@ public class PidController
       }
 
 
-      derivative = -(2f * Kd * (actualPoint - previousMeasurement) + (2f * tau - sampleTime) * derivative) / (2f * tau + sampleTime);
+      //derivative = -(2f * Kd * (actualPoint - previousMeasurement) + (2f * tau - sampleTime) * derivative) / (2f * tau + sampleTime);
+      derivative = (Kd * (actualPoint - previousMeasurement)/ sampleTime);
 
       control = proportional + integral + derivative;
       if (control > limitMaxOutput)

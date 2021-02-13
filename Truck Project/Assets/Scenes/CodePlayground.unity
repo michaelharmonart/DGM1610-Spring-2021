@@ -274,13 +274,12 @@ PolygonCollider2D:
     - - {x: -10.441336, y: -4.981181}
       - {x: -10.357227, y: 5.079476}
       - {x: -9.580616, y: 1.648562}
-      - {x: -7.9045, y: -1.12654}
-      - {x: -5.4882164, y: -1.592772}
-      - {x: -4.263687, y: -3.0552058}
-      - {x: -2.1012602, y: -3.1769004}
-      - {x: 0.44517204, y: -2.9964645}
-      - {x: 2.7398782, y: -2.7464385}
-      - {x: 4.3056517, y: -3.0291677}
+      - {x: -9.057728, y: -1.2368802}
+      - {x: -8.766345, y: -2.3158884}
+      - {x: -7.2525682, y: -3.0069985}
+      - {x: -3.0172076, y: -3.1286926}
+      - {x: 1.9303991, y: -3.0953372}
+      - {x: 4.2816434, y: -3.0266852}
       - {x: 6.1982265, y: -3.2237659}
       - {x: 8.693686, y: -3.3995948}
       - {x: 9.885087, y: -2.9377747}
@@ -338,7 +337,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -7.9045, y: -1.12654, z: 0}
+    - position: {x: -9.061487, y: -1.2229555, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -348,7 +347,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -5.4882164, y: -1.592772, z: 0}
+    - position: {x: -8.766345, y: -2.3158884, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -358,7 +357,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -4.263687, y: -3.0552058, z: 0}
+    - position: {x: -7.2525682, y: -3.0069985, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -368,7 +367,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -2.1012602, y: -3.1769004, z: 0}
+    - position: {x: -3.0172076, y: -3.1286926, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -378,7 +377,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 0.41555846, y: -2.999691, z: 0}
+    - position: {x: 1.9099987, y: -3.096107, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -388,7 +387,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 2.7398782, y: -2.7464385, z: 0}
+    - position: {x: 3.5112023, y: -3.0356855, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -640,23 +639,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7497152971457932042, guid: 2b772e932d0aba7a4848a16a367153fb,
         type: 3}
+      propertyPath: D
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497152971457932042, guid: 2b772e932d0aba7a4848a16a367153fb,
+        type: 3}
       propertyPath: I
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7497152971457932042, guid: 2b772e932d0aba7a4848a16a367153fb,
         type: 3}
       propertyPath: P
-      value: 5
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497152971457932042, guid: 2b772e932d0aba7a4848a16a367153fb,
+        type: 3}
+      propertyPath: Tau
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497152971457932042, guid: 2b772e932d0aba7a4848a16a367153fb,
+        type: 3}
+      propertyPath: torque
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7497152971457932042, guid: 2b772e932d0aba7a4848a16a367153fb,
         type: 3}
       propertyPath: maxOutput
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7497152971457932042, guid: 2b772e932d0aba7a4848a16a367153fb,
         type: 3}
       propertyPath: minOutput
-      value: -1
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497152971457932042, guid: 2b772e932d0aba7a4848a16a367153fb,
+        type: 3}
+      propertyPath: headAngleSoftLimit
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7497152971457932043, guid: 2b772e932d0aba7a4848a16a367153fb,
         type: 3}
