@@ -193,8 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 2770599794686467139}
   head: {fileID: 2770599795741630868}
-  headAngleSoftLimit: 30
-  torque: 20
+  headAngleSoftLimit: 25
+  torque: 25
   jumpForce: 20
   P: 0.3
   I: 0.02
