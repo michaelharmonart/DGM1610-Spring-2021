@@ -55,7 +55,7 @@ public class PidController
 
 
       //derivative = -(2f * Kd * (actualPoint - previousMeasurement) + (2f * tau - sampleTime) * derivative) / (2f * tau + sampleTime);
-      derivative = (Kd * (actualPoint - previousMeasurement)/ sampleTime);
+      derivative = (Kd * (actualPoint - previousMeasurement)/ sampleTime); //derivative on measurement, without a low pass filter, since we have no noise in the signal.
 
       control = proportional + integral + derivative;
       if (control > limitMaxOutput)

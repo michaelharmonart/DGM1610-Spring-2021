@@ -38,9 +38,12 @@ public class BallDroidController : MonoBehaviour
 		//headAngle = Vector3.Angle(new Vector3(0f,1f,0f),(head.transform.position - body.transform.position));
 		headOffset = head.transform.position.x - body.transform.position.x;
 		PID.Update(setPoint,headAngle,P,I,D,Time.fixedDeltaTime,maxOutput,minOutput);
-		body.AddTorque(-PID.Output() * torque * Time.fixedDeltaTime * 10);
 		//head.AddForce(new Vector2(movement * headForce,0));
-		Debug.Log(-PID.Output());
+		Debug.Log(-PID.Output()+"  "+headAngle);
+		if(body.IsTouchingLayers(-1) == true)
+		{
+			body.AddTorque(-PID.Output() * torque * Time.fixedDeltaTime * 10);
+		}
 	}
 	void OnDrawGizmos()
 	{
