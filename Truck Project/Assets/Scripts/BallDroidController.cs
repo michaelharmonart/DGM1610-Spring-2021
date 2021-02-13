@@ -9,10 +9,12 @@ public class BallDroidController : MonoBehaviour
 	public float headAngleSoftLimit;
 	//public float headForce;
 	public float torque;
+	public float jumpForce;
 	public float P,I,D;
 	public float maxOutput,minOutput;
 
 	private float movement;
+	private float jump;
 	private float setPoint;
 	private float headAngle;
 	private float headOffset;
@@ -30,6 +32,7 @@ public class BallDroidController : MonoBehaviour
 	void Update()
 	{
 		movement = Input.GetAxis("Horizontal");
+		jump = Input.GetAxis("Jump");
 		setPoint = Mathf.Lerp(-headAngleSoftLimit,headAngleSoftLimit,(Input.GetAxis("Horizontal")*0.5f)+0.5f);
 	}
 	private void FixedUpdate()
@@ -39,9 +42,10 @@ public class BallDroidController : MonoBehaviour
 		headOffset = head.transform.position.x - body.transform.position.x;
 		PID.Update(setPoint,headAngle,P,I,D,Time.fixedDeltaTime,maxOutput,minOutput);
 		//head.AddForce(new Vector2(movement * headForce,0));
-		Debug.Log(-PID.Output()+"  "+headAngle);
+		Debug.Log(-PID.Output()+"  "+headAngle+"  "+jump);
 		if(body.IsTouchingLayers(-1) == true)
 		{
+			body.AddForce(new Vector2(0f,jump*jumpForce*10));
 			body.AddTorque(-PID.Output() * torque * Time.fixedDeltaTime * 10);
 		}
 	}
