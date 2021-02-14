@@ -9,7 +9,7 @@ public class BallDroidController : MonoBehaviour
 	public float headAngleSoftLimit;
 	//public float headForce;
 	public float torque;
-	public float jumpForce;
+	public float jumpForce,recoveryForce;
 	public float P,I,D;
 	public float maxOutput,minOutput;
 
@@ -19,13 +19,13 @@ public class BallDroidController : MonoBehaviour
 	private float headAngle;
 	private float headOffset;
 
- 	PidController PID = new PidController();
+ 	PidController balancePid = new PidController();
 
 	// Start is called before the first frame update
 	void Start()
 	{
 
-		PID.Reset();
+		balancePid.Reset();
 	}
 
 	// Update is called once per frame
@@ -40,13 +40,17 @@ public class BallDroidController : MonoBehaviour
 		headAngle = Vector3.SignedAngle((head.transform.position - body.transform.position),new Vector3(0f,1f,0f),new Vector3(0f,0f,1f));
 		//headAngle = Vector3.Angle(new Vector3(0f,1f,0f),(head.transform.position - body.transform.position));
 		headOffset = head.transform.position.x - body.transform.position.x;
-		PID.Update(setPoint,headAngle,P,I,D,Time.fixedDeltaTime,maxOutput,minOutput);
+		balancePid.Update(setPoint,headAngle,P,I,D,Time.fixedDeltaTime,maxOutput,minOutput);
 		//head.AddForce(new Vector2(movement * headForce,0));
-		Debug.Log(-PID.Output()+"  "+headAngle+"  "+jump);
-		if(body.IsTouchingLayers(-1) == true)
+		Debug.Log(-balancePid.Output()+"  "+headAngle+"  "+jump);
+		if(body.IsTouchingLayers(-1) == true && Mathf.Abs(headAngle) <80)
 		{
 			body.AddForce(new Vector2(0f,jump*jumpForce*10));
-			body.AddTorque(-PID.Output() * torque * Time.fixedDeltaTime * 10);
+			body.AddTorque(-balancePid.Output() * torque * Time.fixedDeltaTime * 10);
+		}
+		if(body.IsTouchingLayers(-1) == true && Mathf.Abs(headAngle) > 80)
+		{
+			head.AddForce(new Vector2(0f,jump*recoveryForce));
 		}
 	}
 	void OnDrawGizmos()
