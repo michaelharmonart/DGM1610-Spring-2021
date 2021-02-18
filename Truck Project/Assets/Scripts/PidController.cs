@@ -21,9 +21,19 @@ public class PidController
     public void Update(float setPoint,float actualPoint,float Kp,float Ki,float Kd, float sampleTime, float limitMaxOutput, float limitMinOutput)
     {
       errorValue = actualPoint - setPoint;
+
+      //Calculate proportional term
+      //This term does the bulk of the correction, by trying to proportionally correct for the error in the system
       proportional = Kp * errorValue;
+
+      //Compute intergral term by adding up errors, as well as adding the previous integral term.
+      //This term acrues errors to fix inaccuracy in the system over time
       integral = integral + 0.5f * Ki * sampleTime * (errorValue + previousError);
 
+      /* Compute clamping values for the integral term, to counter integral windup
+      (When there's a high error for a long time the integral term acrues too much error,
+      and takes a while to wind back down once the system is back to being stable,
+      and this prevents that windup) */
       if(limitMaxOutput > proportional)
       {
         limitMaxIntegral = limitMaxOutput - proportional;
@@ -42,6 +52,7 @@ public class PidController
         limitMinIntergral = 0f;
       }
 
+      //Actually do the integral value clamping
       if (integral > limitMaxIntegral)
       {
         integral = limitMaxIntegral;
@@ -51,11 +62,18 @@ public class PidController
         integral = limitMinIntergral;
       }
 
-
+      //This is the derivative calculation with a low pass filter, currently it doesn't work
       //derivative = -(2f * Kd * (actualPoint - previousMeasurement) + (2f * tau - sampleTime) * derivative) / (2f * tau + sampleTime);
-      derivative = (Kd * (actualPoint - previousMeasurement)/ sampleTime); //derivative on measurement, without a low pass filter, since we have no noise in the signal.
+
+      /* Derivative on measurement, without a low pass filter, since we have no noise in the signal.
+      This term tries to keep the state of the system from moving, even with input, because it's on measurement instead of error.
+      This does reduce derivative "kick" if there's a quick change in setpoint,
+      but also causes changes in the setpoint to be more slowly realized in the ouput (less "snappy" control) */
+      derivative = (Kd * (actualPoint - previousMeasurement)/ sampleTime);
 
       control = proportional + integral + derivative;
+
+      //Clamp the output of the PID controller
       if (control > limitMaxOutput)
       {
         control = limitMaxOutput;
@@ -65,6 +83,7 @@ public class PidController
         control = limitMinOutput;
       }
 
+      //Set previous values for the intergral and derivative terms
       previousError = errorValue;
       previousMeasurement = actualPoint;
     }
