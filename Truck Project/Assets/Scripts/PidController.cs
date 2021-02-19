@@ -53,14 +53,7 @@ public class PidController
       }
 
       //Actually do the integral value clamping
-      if (integral > limitMaxIntegral)
-      {
-        integral = limitMaxIntegral;
-      }
-      if (integral < limitMinIntergral)
-      {
-        integral = limitMinIntergral;
-      }
+      integral = Mathf.Clamp(integral, limitMinIntergral, limitMaxIntegral);
 
       //This is the derivative calculation with a low pass filter, currently it doesn't work
       //derivative = -(2f * Kd * (actualPoint - previousMeasurement) + (2f * tau - sampleTime) * derivative) / (2f * tau + sampleTime);
@@ -74,14 +67,7 @@ public class PidController
       control = proportional + integral + derivative;
 
       //Clamp the output of the PID controller
-      if (control > limitMaxOutput)
-      {
-        control = limitMaxOutput;
-      }
-      if (control < limitMinOutput)
-      {
-        control = limitMinOutput;
-      }
+      control = Mathf.Clamp(control, limitMinOutput, limitMaxOutput);
 
       //Set previous values for the intergral and derivative terms
       previousError = errorValue;
