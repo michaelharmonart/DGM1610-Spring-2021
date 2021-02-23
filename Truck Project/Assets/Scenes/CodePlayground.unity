@@ -711,6 +711,11 @@ PrefabInstance:
       propertyPath: recoveryForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1807054308758109223, guid: 2b772e932d0aba7a4848a16a367153fb,
+        type: 3}
+      propertyPath: headAngleSoftLimit
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 1807054308758109224, guid: 2b772e932d0aba7a4848a16a367153fb,
         type: 3}
       propertyPath: m_RootOrder
