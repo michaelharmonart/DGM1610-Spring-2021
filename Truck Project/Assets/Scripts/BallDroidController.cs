@@ -16,6 +16,7 @@ public class BallDroidController : MonoBehaviour
 	private float setPoint;
 	private float headAngle;
 	private Vector2 headForceVector;
+	private float bodySpeed;
 
 	//Create PID controller objects
  	PidController balancePid = new PidController();
@@ -40,10 +41,23 @@ public class BallDroidController : MonoBehaviour
 		headAngle = Vector3.SignedAngle((head.transform.position - body.transform.position),Vector3.up,Vector3.forward); //Find angle of head compared to the body position
 		headForceVector = -Vector2.Perpendicular(new Vector2(head.transform.position.x,head.transform.position.y) - new Vector2(body.transform.position.x,body.transform.position.y)); //Janky line of code that finds a vector perpendicular to the body offset
 
+		//Calculate the speed in every case
+		if(body.velocity.x > 0)
+		{
+			bodySpeed = Vector3.Magnitude(new Vector3(body.velocity.x,body.velocity.y,0f));
+		}
+		if(body.velocity.x < 0)
+		{
+			bodySpeed = -Vector3.Magnitude(new Vector3(body.velocity.x,body.velocity.y,0f));
+		}
+		if(body.velocity.x == 0)
+		{
+			bodySpeed = 0f;
+		}
+
 		//Update the PID controllers
 		balancePid.Update(setPoint,headAngle,P,I,D,Time.fixedDeltaTime,maxOutput,minOutput);
 		headAirPid.Update(setPoint,headAngle,0.05f,0f,0.015f,Time.fixedDeltaTime,maxOutput,minOutput);
-
 
 		Debug.Log(-balancePid.Output()+"  "+headAngle+"  "+jump);
 		if(body.IsTouchingLayers(-1) == true && Mathf.Abs(headAngle) <80) //If the body is touching anything, and is somewhat upright
