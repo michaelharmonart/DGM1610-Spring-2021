@@ -55,9 +55,9 @@ public class BallDroidController : MonoBehaviour
 		{
 			head.AddForce(new Vector2(0f,jump*recoveryForce)); //If the jump button is pressed, add a recoveryForce to the head to return it to an upright position
 		}
-		if(body.IsTouchingLayers(-1) == false) //If the body isn't touching anything
+		if(body.IsTouchingLayers(-1) == false && Mathf.Abs(headAngle) < 80) //If the body isn't touching anything and the head is upright
 		{
-			head.AddForce(headForceVector*-headAirPid.Output());
+			head.AddForce(headForceVector*-headAirPid.Output()); //Add force to the head according to PID output
 		}
 	}
 	void OnDrawGizmos()
