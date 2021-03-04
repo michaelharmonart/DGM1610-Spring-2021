@@ -59,7 +59,7 @@ public class BallDroidController : MonoBehaviour
 		balancePid.Update(setPoint,headAngle,P,I,D,Time.fixedDeltaTime,maxOutput,minOutput);
 		headAirPid.Update(setPoint,headAngle,0.05f,0f,0.015f,Time.fixedDeltaTime,maxOutput,minOutput);
 
-		Debug.Log(-balancePid.Output()+"  "+headAngle+"  "+bodySpeed);
+		//Debug.Log(-balancePid.Output()+"  "+headAngle+"  "+bodySpeed);
 		if(body.IsTouchingLayers(-1) == true && Mathf.Abs(headAngle) <80) //If the body is touching anything, and is somewhat upright
 		{
 			body.AddForce(new Vector2(0f,jump*jumpForce*10)); //Add the jumpForce
