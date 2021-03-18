@@ -5,6 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     public GameObject carBody;
+    public Rigidbody FR,FL,BR,BL;
     public float Torque; 
     private float axisHorizontal, axisVertical;
     private Rigidbody carBodyRB;
@@ -25,6 +26,11 @@ public class CarController : MonoBehaviour
     void FixedUpdate()
     {
         forceVector = carBodyRB.transform.rotation * Vector3.forward * Torque * axisVertical * 10f;
-        carBodyRB.AddForce(forceVector);
+        //carBodyRB.AddForce(forceVector);
+        FR.AddTorque(Torque * axisVertical * Time.fixedDeltaTime * 1000,0f,0f);
+        BR.AddTorque(Torque * axisVertical * Time.fixedDeltaTime * 1000,0f,0f);
+        FL.AddTorque(Torque * axisVertical * Time.fixedDeltaTime * 1000,0f,0f);
+        BL.AddTorque(Torque * axisVertical * Time.fixedDeltaTime * 1000,0f,0f);
+
     }
 }
