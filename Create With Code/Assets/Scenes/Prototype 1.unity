@@ -1087,6 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 649652974}
+  cameraMoveSpeed: 4
 --- !u!1001 &578002886
 PrefabInstance:
   m_ObjectHideFlags: 0

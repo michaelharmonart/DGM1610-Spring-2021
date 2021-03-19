@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject cameraTarget;
-		private Vector3 cameraOffset;
+    public float cameraMoveSpeed;
+		private Vector3 cameraOffset,tempOffset;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-				transform.position = cameraTarget.transform.position + cameraOffset;
+        tempOffset = transform.position - (cameraTarget.transform.position + cameraOffset);
+				transform.position = transform.position - (tempOffset * cameraMoveSpeed * Time.deltaTime);
     }
 }
