@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
-  - component: {fileID: 534669907}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -559,14 +559,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.3, z: -13.2}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 15.6, y: 2.6, z: 9.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &534669907
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -575,10 +575,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 573453567e55b468d959b66ab676a102, type: 3}
+  m_Script: {fileID: 11500000, guid: cc2be7d9d6351018faef17a0cb3e6e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plane: {fileID: 0}
+  cameraTarget: {fileID: 825415029}
+  cameraMoveSpeed: 4
 --- !u!1 &673814960
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,13 +818,13 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 96
   m_CollisionDetection: 0
---- !u!114 &825415031
+--- !u!114 &825415035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -832,12 +833,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 825415029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0232a093d67e448b7a80e945acf8e227, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c6a0d63b8cec639d9930bafdb532903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  rotationSpeed: 100
-  verticalInput: 0
+  planeBody: {fileID: 825415029}
+  planeProp: {fileID: 1656051087}
+  speed: 10
+  turningSpeed: 10
 --- !u!1 &899755176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,6 +1521,12 @@ Transform:
   m_Father: {fileID: 1974947895}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1656051087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: af29f0ea7e5403641b3b244ede69c374,
+    type: 3}
+  m_PrefabInstance: {fileID: 1239094319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1667803326
 GameObject:
   m_ObjectHideFlags: 0

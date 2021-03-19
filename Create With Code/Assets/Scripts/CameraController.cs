@@ -17,6 +17,6 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         tempOffset = transform.position - (cameraTarget.transform.position + cameraOffset);
-				transform.position = transform.position - (tempOffset * cameraMoveSpeed * Time.deltaTime);
+				transform.position = transform.position - (tempOffset *  Mathf.Clamp((cameraMoveSpeed * Time.deltaTime),0f,1f));
     }
 }

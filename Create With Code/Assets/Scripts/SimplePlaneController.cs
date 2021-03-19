@@ -9,9 +9,10 @@ public class SimplePlaneController : MonoBehaviour
 
     private float axisHorizontal,axisVertical;
     private Vector3 directionVector;
+    private Rigidbody planeRigidBody;
     void Start()
     {
-        
+        planeRigidBody = planeBody.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -20,6 +21,9 @@ public class SimplePlaneController : MonoBehaviour
         axisHorizontal = Input.GetAxis("Horizontal");
         axisVertical = Input.GetAxis("Vertical");
         directionVector = planeBody.transform.rotation * Vector3.forward;
-        planeBody.transform.Translate(directionVector);
+        planeRigidBody.AddTorque(Vector3.right * axisVertical * turningSpeed);
+        //planeRigidBody.AddTorque(Vector3.back * axisHorizontal * turningSpeed);
+        planeRigidBody.velocity = directionVector * speed;
+        planeProp.transform.Rotate(Vector3.forward, 1000 * Time.deltaTime);
     }
 }
