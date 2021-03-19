@@ -6,7 +6,7 @@ public class CarController : MonoBehaviour
 {
     public GameObject carBody;
     public Rigidbody FR,FL,BR,BL;
-    public float Torque; 
+    public float Torque,maxSpeed; 
     private float axisHorizontal, axisVertical;
     private Rigidbody carBodyRB;
     private Vector3 forceVector;
@@ -14,6 +14,10 @@ public class CarController : MonoBehaviour
     void Start()
     {
       carBodyRB = GetComponent<Rigidbody>();
+      FR.maxAngularVelocity = maxSpeed;
+      BR.maxAngularVelocity = maxSpeed;
+      FL.maxAngularVelocity = maxSpeed;
+      BL.maxAngularVelocity = maxSpeed;
     }
 
     // Update is called once per frame
@@ -25,12 +29,12 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
-        forceVector = carBodyRB.transform.rotation * Vector3.forward * Torque * axisVertical * 10f;
+        //forceVector = carBodyRB.transform.rotation * Vector3.forward * Torque * axisVertical * 10f;
         //carBodyRB.AddForce(forceVector);
-        FR.AddTorque(Torque * axisVertical * Time.fixedDeltaTime * 1000,0f,0f);
-        BR.AddTorque(Torque * axisVertical * Time.fixedDeltaTime * 1000,0f,0f);
-        FL.AddTorque(Torque * axisVertical * Time.fixedDeltaTime * 1000,0f,0f);
-        BL.AddTorque(Torque * axisVertical * Time.fixedDeltaTime * 1000,0f,0f);
+        FR.AddTorque(Torque * axisVertical * Time.fixedDeltaTime,0f,0f);
+        BR.AddTorque(Torque * axisVertical * Time.fixedDeltaTime,0f,0f);
+        FL.AddTorque(Torque * axisVertical * Time.fixedDeltaTime,0f,0f);
+        BL.AddTorque(Torque * axisVertical * Time.fixedDeltaTime,0f,0f);
 
     }
 }
