@@ -21,5 +21,6 @@ public class SimpleCarController : MonoBehaviour
         axisHorizontal = Input.GetAxis("Horizontal");
         axisVertical = Input.GetAxis("Vertical");
         carBody.transform.Translate(0f,0f,axisVertical * speed * Time.deltaTime);
+        carBody.transform.Translate(axisHorizontal * turningSpeed * Time.deltaTime,0f,0f);
     }
 }
