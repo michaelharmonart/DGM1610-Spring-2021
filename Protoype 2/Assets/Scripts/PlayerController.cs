@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject projectilePrefab;
     public float speed,xRange;
 
     private float inputHorizontal, inputVertical;
@@ -18,7 +19,13 @@ public class PlayerController : MonoBehaviour
     {
         inputVertical = Input.GetAxis("Vertical");
         inputHorizontal = Input.GetAxis("Horizontal");
-        player.transform.Translate(inputHorizontal * speed * Time.deltaTime,0,0);
+        player.transform.Translate(Vector3.right * inputHorizontal * speed * Time.deltaTime);
+        
+     if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectilePrefab, player.transform.position, player.transform.rotation);
+        }
+
         if (player.transform.position.x > xRange)
         {
             player.transform.Translate(xRange - player.transform.position.x,0,0);
@@ -27,5 +34,6 @@ public class PlayerController : MonoBehaviour
         {
             player.transform.Translate(-xRange - player.transform.position.x,0,0);
         }
+
     }
 }
