@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
     public Vector3 spawnLocation;
     public float startDelay,repeatRate;
     public Quaternion objectRotation;
+    public BoolData gameOver;
     
     void Start()
     {
@@ -22,6 +23,8 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnObstacle()
     {
-        Instantiate(obstacles[Random.Range(0,obstacles.Length)], spawnLocation, objectRotation);
+        if (!gameOver.data){
+            Instantiate(obstacles[Random.Range(0,obstacles.Length)], spawnLocation, objectRotation);
+        }
     }
 }

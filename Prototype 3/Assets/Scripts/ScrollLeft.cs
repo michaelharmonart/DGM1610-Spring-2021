@@ -5,6 +5,9 @@ using UnityEngine;
 public class ScrollLeft : MonoBehaviour
 {
     public IntData scrollSpeed;
+    public BoolData gameOver;
+    public float despawnX = -15;
+
     void Start()
     {
         
@@ -12,6 +15,14 @@ public class ScrollLeft : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.left * scrollSpeed.data * Time.deltaTime);
+        if (!gameOver.data)
+        {
+            transform.Translate(Vector3.left * scrollSpeed.data * Time.deltaTime);
+        }
+        
+        if (transform.position.x <= despawnX)
+        {
+            Destroy(gameObject);
+        }
     }
 }

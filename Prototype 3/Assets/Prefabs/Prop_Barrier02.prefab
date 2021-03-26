@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 5651760376585150988}
   m_Layer: 0
   m_Name: Prop_Barrier02
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: {fileID: 11400000, guid: 4bd03ee9e5451d076a2f7618db940cce, type: 2}
+  gameOver: {fileID: 11400000, guid: 49862a44a83085154b61c36f18c58187, type: 2}
