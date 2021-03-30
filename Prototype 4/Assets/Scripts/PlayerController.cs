@@ -18,6 +18,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(focalPoint.transform.forward * verticalInput * speed * Time.deltaTime);
+        playerRigidbody.AddForce(focalPoint.transform.forward * verticalInput * speed);
     }
 }
