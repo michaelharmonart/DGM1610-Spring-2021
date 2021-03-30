@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.Find("Player");
         enemyRigidbody = GetComponent<Rigidbody>();
     }
 
