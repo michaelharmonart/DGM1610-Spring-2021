@@ -53,4 +53,5 @@ public class PlayerController : MonoBehaviour
         powerupIndicator.SetActive(false);
         hasPowerup = false;
     }
+
 }

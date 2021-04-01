@@ -20,6 +20,10 @@ public class EnemyController : MonoBehaviour
     {
         movementDirection = (player.transform.position - transform.position).normalized;
         enemyRigidbody.AddForce(movementDirection * speed);
+        if(transform.position.y <= -10f)
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

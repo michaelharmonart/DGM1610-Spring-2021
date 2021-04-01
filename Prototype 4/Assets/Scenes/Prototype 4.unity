@@ -522,10 +522,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 4261233909553854724, guid: 51f71320d68c7ed0abc5f68f170389c0, type: 3}
+  powerup: {fileID: 3106456241262575821, guid: a5a5f448e57a2345b9d222a9fa87d211, type: 3}
   enemySpawnRange: 9
   initialDelay: 2
   minDelay: 1
   maxDelay: 5
+  enemyCount: 0
 --- !u!1 &1493008811
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,11 +649,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d0da6567c58f3789ccc168cb63ea40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 30
   focalPoint: {fileID: 265058821}
   powerupIndicator: {fileID: 878129730}
   hasPowerup: 0
-  powerupStrength: 10
+  powerupStrength: 15
   powerupDuration: 5
 --- !u!1001 &1615976829
 PrefabInstance:
