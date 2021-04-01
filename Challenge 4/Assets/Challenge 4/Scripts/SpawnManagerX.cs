@@ -12,6 +12,7 @@ public class SpawnManagerX : MonoBehaviour
     private float spawnZMax = 25; // set max spawn Z
 
     public int enemyCount;
+    public float enemySpeed = 10;
     public int waveCount = 1;
 
 
@@ -55,6 +56,7 @@ public class SpawnManagerX : MonoBehaviour
         }
 
         waveCount++;
+        enemySpeed += 10;
         ResetPlayerPosition(); // put player back at start
 
     }

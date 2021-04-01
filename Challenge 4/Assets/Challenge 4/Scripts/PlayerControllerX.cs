@@ -7,6 +7,7 @@ public class PlayerControllerX : MonoBehaviour
     private Rigidbody playerRb;
     private float speed = 500;
     private GameObject focalPoint;
+    private GameObject boostParticles;
 
     public bool hasPowerup;
     public GameObject powerupIndicator;
@@ -14,10 +15,12 @@ public class PlayerControllerX : MonoBehaviour
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
+    private bool boostRecharged = true;
     
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        boostParticles = GameObject.Find("Boost Particles");
         focalPoint = GameObject.Find("Focal Point");
     }
 
@@ -29,6 +32,14 @@ public class PlayerControllerX : MonoBehaviour
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
+
+        if(Input.GetKeyDown(KeyCode.Space) && boostRecharged)
+        {
+            boostParticles.GetComponent<ParticleSystem>().Play();
+            playerRb.AddForce(focalPoint.transform.forward * speed * Time.deltaTime, ForceMode.Impulse);
+            boostRecharged = false;
+            StartCoroutine(BoostCooldown());
+        }
 
     }
 
@@ -50,6 +61,12 @@ public class PlayerControllerX : MonoBehaviour
         yield return new WaitForSeconds(powerUpDuration);
         hasPowerup = false;
         powerupIndicator.SetActive(false);
+    }
+
+    IEnumerator BoostCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        boostRecharged = true;
     }
 
     // If Player collides with enemy
