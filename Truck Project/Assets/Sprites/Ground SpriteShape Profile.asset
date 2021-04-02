@@ -10,26 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7181f404f1447c0a7a17b3070b952b, type: 3}
-  m_Name: New SpriteShapeProfile
+  m_Name: Ground SpriteShape Profile
   m_EditorClassIdentifier: 
   m_Angles:
   - m_Start: -45
     m_End: 45
     m_Order: 4
-    m_Sprites: []
+    m_Sprites:
+    - {fileID: 21300000, guid: a694f5d4f8d4369c2b8f4dde24af370a, type: 3}
   - m_Start: -135
     m_End: -45
     m_Order: 3
-    m_Sprites: []
+    m_Sprites:
+    - {fileID: 21300000, guid: a694f5d4f8d4369c2b8f4dde24af370a, type: 3}
   - m_Start: 135
     m_End: 225
     m_Order: 2
-    m_Sprites: []
+    m_Sprites:
+    - {fileID: 21300000, guid: a694f5d4f8d4369c2b8f4dde24af370a, type: 3}
   - m_Start: 45
     m_End: 135
     m_Order: 1
-    m_Sprites: []
-  m_FillTexture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+    m_Sprites:
+    - {fileID: 21300000, guid: a694f5d4f8d4369c2b8f4dde24af370a, type: 3}
+  m_FillTexture: {fileID: 2800000, guid: dc78dd79f24843350b0912485e3e04f2, type: 3}
   m_CornerSprites:
   - m_CornerType: 0
     m_Sprites:
