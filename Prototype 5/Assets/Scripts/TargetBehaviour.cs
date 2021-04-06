@@ -14,6 +14,7 @@ public class TargetBehaviour : MonoBehaviour
 
 
     public int pointValue;
+    public ParticleSystem explosionParticle;
 
 
     private Rigidbody targetRigidbody;
@@ -42,6 +43,7 @@ public class TargetBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
         gameManager.updateScore(pointValue);
+        Instantiate(explosionParticle,transform.position, transform.rotation);
     }
 
     private void OnTriggerEnter (Collider other)
