@@ -19,7 +19,7 @@ public class PlayerControllerX : MonoBehaviour
     
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
+        playerRb = GetComponent<Rigidbody>(); 
         boostParticles = GameObject.Find("Boost Particles");
         focalPoint = GameObject.Find("Focal Point");
     }
