@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2266845169075952398}
   - component: {fileID: 2266845169074854350}
   - component: {fileID: 3270094210522673804}
-  - component: {fileID: 1826424895370937571}
   - component: {fileID: 2762962296185426726}
+  - component: {fileID: 7836063362479985311}
   m_Layer: 0
   m_Name: Food_Sandwich_01
   m_TagString: Untagged
@@ -96,19 +96,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1826424895370937571
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2266845169077110542}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.51974, y: 0.17482021, z: 0.5152532}
-  m_Center: {x: 0, y: -0.000000022351742, z: -0.000000044703484}
 --- !u!114 &2762962296185426726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,3 +108,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bf0e0202d349b33a84d4fa4bb4ac82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointValue: 5
+--- !u!135 &7836063362479985311
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266845169077110542}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25987
+  m_Center: {x: 0, y: -0.000000022351742, z: -0.000000044703484}
