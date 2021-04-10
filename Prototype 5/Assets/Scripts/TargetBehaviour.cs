@@ -12,7 +12,6 @@ public class TargetBehaviour : MonoBehaviour
     private GameManager gameManager; 
 
 
-
     public int pointValue;
     public ParticleSystem explosionParticle;
 
@@ -36,22 +35,55 @@ public class TargetBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameManager.gameOver)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnMouseDown()
     {
-        Destroy(gameObject);
-        gameManager.updateScore(pointValue);
-        Instantiate(explosionParticle,transform.position, transform.rotation);
+        if(!gameManager.gameOver)
+        {
+            Destroy(gameObject);
+            gameManager.UpdateScore(pointValue);
+            if (pointValue > 0 && gameManager.strikes > 0)
+            {
+                gameManager.strikes -= 1;
+                Debug.Log(gameManager.strikes);
+            }
+            if (pointValue < 0)
+            {
+                gameManager.strikes += 1;
+                Debug.Log(gameManager.strikes);
+            }
+            if (gameManager.score <= 0)
+            {
+                gameManager.GameOver();
+            }
+            Instantiate(explosionParticle,transform.position, transform.rotation);
+        }
     }
 
     private void OnTriggerEnter (Collider other)
     {
         Destroy(gameObject);
-        if (pointValue > 0)
+        if(!gameManager.gameOver)
         {
-            gameManager.updateScore(-10);
+            if (pointValue > 0)
+            {
+                gameManager.UpdateScore(-10);
+                gameManager.strikes += 1;
+                Debug.Log(gameManager.strikes);
+            }
+            if (gameManager.strikes >= (4-gameManager.difficulty))
+            {
+                gameManager.GameOver();
+            }
+            if (gameManager.score <= 0)
+            {
+                gameManager.GameOver();
+            }
         }
     }
 }

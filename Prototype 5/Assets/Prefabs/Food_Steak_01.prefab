@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7047542227141739385}
   - component: {fileID: 1228616644827815962}
   - component: {fileID: 7820000710955750292}
-  - component: {fileID: 5079400101014406701}
+  - component: {fileID: 3170167013323009168}
   m_Layer: 0
   m_Name: Food_Steak_01
   m_TagString: Untagged
@@ -111,8 +111,8 @@ MonoBehaviour:
   pointValue: 5
   explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb,
     type: 3}
---- !u!135 &5079400101014406701
-SphereCollider:
+--- !u!65 &3170167013323009168
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -122,5 +122,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.27
+  m_Size: {x: 0.46739918, y: 0.26, z: 0.6615112}
   m_Center: {x: 0, y: 0.04279684, z: 0}
