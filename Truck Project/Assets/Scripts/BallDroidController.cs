@@ -62,7 +62,10 @@ public class BallDroidController : MonoBehaviour
 		//Debug.Log(-balancePid.Output()+"  "+headAngle+"  "+bodySpeed);
 		if(body.IsTouchingLayers(-1) == true && Mathf.Abs(headAngle) <80) //If the body is touching anything, and is somewhat upright
 		{
-			body.AddForce(new Vector2(0f,jump*jumpForce*10)); //Add the jumpForce
+			if (jump == 1)
+			{
+				Jump();
+			}
 			body.AddTorque(-balancePid.Output() * torque * Time.fixedDeltaTime * 10); //Add torque to the body according to PID outputs
 		}
 		if(body.IsTouchingLayers(-1) == true && Mathf.Abs(headAngle) > 80) //If the body is touching anything, and the head is not upright
@@ -78,5 +81,9 @@ public class BallDroidController : MonoBehaviour
 	{
 		Gizmos.color = Color.blue;
 		Gizmos.DrawLine(body.transform.position,head.transform.position);
+	}
+	void Jump()
+	{
+		body.AddForce(new Vector2(0f,jumpForce*10));
 	}
 }
